@@ -6,17 +6,17 @@
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
 	<flow name="get-claims-performancedata" doc:id="099640f1-2fb3-4e39-80ff-ba10bfc3ee44" >
-		<logger level="INFO" doc:name="Before request Logger" doc:id="042782e3-786e-4649-bdb8-d6f4e8956914" message="Before request flow"/>
+		<logger level="INFO" doc:name="Before Request" doc:id="042782e3-786e-4649-bdb8-d6f4e8956914" message="Start before request flow"/>
 		<until-successful maxRetries="${retries.attempts}" doc:name="Until Successful" doc:id="9dcfffc9-e16c-4845-833a-61a685f6e83b" millisBetweenRetries="${retries.frequency}">
 			<http:request method="GET" doc:name="Claim Request" doc:id="3aae7252-2841-41db-80d3-2aa13a304c36" config-ref="sysclaims-requestConfig" path="${sysclaims.path}">
 			<http:headers><![CDATA[#[output application/java
 ---
 {
-	"orchestration-type" : "${sysclaims.orchestration-type}",
-	"x-correlation-id" : "${sysclaims.x-correlation-id}",
-	"clientSecret" : "${sysclaims.clientSecret}",
-	"Authorization" : "${secure::sysclaims.Authorization}",
-	"clientId" : "${sysclaims.clientId}"
+	"orchestration-type" : "Value",
+	"x-correlation-id" : "1234",
+	"clientSecret" : "1234",
+	"Authorization" : "Bearer eyJ0eXAi0iJKd",
+	"clientId" : "1234"
 }]]]></http:headers>
 			<http:query-params><![CDATA[#[output application/java
 ---
