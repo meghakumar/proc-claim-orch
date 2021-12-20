@@ -68,7 +68,7 @@ pipeline
 	   script {
    configFileProvider([configFile(fileId: 'da01fc76-5c2b-4f0d-948a-c101b4cc4340', variable: 'settings')]){
    	LAST_STARTED = env.STAGE_NAME
- 	sh "mvn -f pom.xml -s $settings deploy -DmuleDeploy -Dsecure.key=mule -DskipTests -Dautodiscovery.id='17512639' -Dap.client_id=fda777bd3e3b4fcb93aff995fea2043d -Dap.client_secret=4193AA1986054C548Bf757fd1B7F6f18 -Dapp.runtime.semver=4.4.0 -Ddeployment.env=dev -Danypoint.businessGroup='NJC POC' -Ddeployment.name=sys-claims-cms"
+ 	sh "mvn -f pom.xml -s $settings deploy -DmuleDeploy -Dsecure.key=mule -DskipTests -Dautodiscovery.id='17512639' -Dap.client_id=fda777bd3e3b4fcb93aff995fea2043d -Dap.client_secret=4193AA1986054C548Bf757fd1B7F6f18 -Dapp.runtime.semver=4.4.0 -Ddeployment.env=dev -Danypoint.businessGroup='NJC POC' -Ddeployment.name=proc-claim-orch"
  	}
 	   }
    }
@@ -82,22 +82,22 @@ pipeline
 
       }
 	  }
-        stage('Email') {
+     //   stage('Email') {
+     // steps {
+     //   emailext(subject: 'Reports', body: 'Attached the body', attachLog: true, attachmentsPattern: '*/summary.html', from: 'jojisham13@gmail.com', mimeType: 'text/html', to: 'jojisham13@gmail.com')
+     // }
+    //}
+
+ // }
+  
+  
+   stage('Email') {
       steps {
-        emailext(subject: 'Reports', body: 'Attached the body', attachLog: true, attachmentsPattern: '*/summary.html', from: 'jojisham13@gmail.com', mimeType: 'text/html', to: 'jojisham13@gmail.com')
+       emailext(subject: 'Testing Reports for $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', body: 'Please find the test reports. In order to check the logs also, please go to url: $BUILD_URL'+readFile("emailTemplate.html"), attachmentsPattern: '**/summary.html', from: "${readProps['email.from']}", mimeType: "${readProps['email.mimeType']}", to: "${readProps['email.to']}")
       }
     }
 
   }
-  
-  
-  // stage('Email') {
-   //   steps {
-   //     emailext(subject: 'Testing Reports for $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', body: 'Please find the test reports. In order to check the logs also, please go to url: $BUILD_URL'+readFile("emailTemplate.html"), attachmentsPattern: '*/target/site/munit/coverage/summary.html', from: "${readProps['email.from']}", mimeType: "${readProps['email.mimeType']}", to: "${readProps['email.to']}")
-   //   }
-  //  }
-
- // }
  	
  	
  	
