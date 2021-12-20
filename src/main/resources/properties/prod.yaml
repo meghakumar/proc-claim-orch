@@ -7,7 +7,7 @@ api:
   port: "8084"
   
 tls.keystore:
- password: "![TjrgNiKb/sw=]"
+
  type: "pkcs12"
  alias: "server"
  path: "certs/sys-claims-cms-dev.p12"

@@ -15,7 +15,6 @@ api:
   "statuspath": "/status"  
   "port" : "443"
   "contenttype": "application/json"
-  "Authorization": "1234"
   "x-correlation-id": "abcdedf09-nkn4546-jn34nkkm-fg669c0002"
   "clientId": "12234"
   "clientSecret": "1234"
@@ -28,7 +27,6 @@ api:
   "timeout": "400000" 
   
 tls.keystore:
- password: "![TjrgNiKb/sw=]"
  type: "pkcs12"
  alias: "server"
  path: "certs/proc-claims-cms-dev.p12"

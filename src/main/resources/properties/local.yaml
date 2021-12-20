@@ -22,7 +22,7 @@ api:
   "orchestration-type": "value"
   
 tls.keystore:
- password: "![TjrgNiKb/sw=]"
+
  type: "pkcs12"
  alias: "server"
  path: "certs/proc-claims-cms-dev.p12"

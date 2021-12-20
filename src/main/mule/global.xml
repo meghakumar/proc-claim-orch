@@ -11,7 +11,7 @@
     <apikit:config name="proc-claims-orch-config" api="resource::b0beec90-c6cc-4c36-8f7c-ef1f8f91253b:claims-process-api:1.0.0:raml:zip:proc-claims-orch.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
     <tls:context name="tlsContext" doc:name="TLS Context" doc:id="b282df1a-eeb0-4ea0-a1f1-b7d3e961a391">
         <tls:trust-store insecure="true" />
-		<tls:key-store type="${jks.keystore.type}" path="${jks.keystore.path}" keyPassword="${secure::jks.keystore.password}" password="${secure::jks.keystore.password}"/>
+		<tls:key-store type="${jks.keystore.type}" path="${jks.keystore.path}" keyPassword="${jks.keystore.password}" password="${jks.keystore.password}"/>
     </tls:context>
     <global-property doc:name="secure.key" doc:id="fe874ebf-ca6e-47b0-a0c3-235a4cdcf441" name="secure.key" value="mule" />
     

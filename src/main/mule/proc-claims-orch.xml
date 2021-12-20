@@ -10,9 +10,9 @@
                 <http:headers><![CDATA[#[vars.outboundHeaders default {}]]]></http:headers>
             </http:error-response>
         </http:listener>
-        <logger level="INFO" doc:name="Start Logger" doc:id="e6998140-32da-49a8-93a3-960a7089dda9" />
+        <logger level="INFO" doc:name="Start Logger" doc:id="ed57840e-1b10-4771-a947-126668c2bf59" message="start process flow"/>
 		<apikit:router config-ref="proc-claims-orch-config"/>
-        <logger level="INFO" doc:name="End Logger" doc:id="91167e08-0366-48cd-b7a2-8d6c8f8dd604" message="End the process flow #[attributes.headers.'x-correlation-id']"/>
+        <logger level="INFO" doc:name="End Logger" doc:id="89b61388-c151-4ed3-b5ae-198046415512" message="End of Process flow #[attributes.headers.'x-correlation-id']"/>
 		<error-handler>
             <on-error-propagate type="APIKIT:BAD_REQUEST">
                 <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
@@ -137,7 +137,7 @@ output application/json
         </ee:transform>
     </flow>
     <flow name="get:\status:proc-claims-orch-config">
-		<logger level="INFO" doc:name="Start Status " doc:id="0fa956ef-17c0-4445-ad6e-7c3944f9d6d7" message="Start status flow"/>
+		<logger level="INFO" doc:name="Start Logger" doc:id="b6eae430-7fc9-4af1-9f9e-93b1841e577e" message="start of status flow"/>
 		<ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
             <ee:message>
                 <ee:set-payload><![CDATA[%dw 2.0
@@ -153,7 +153,7 @@ output application/json
 }]]></ee:set-payload>
             </ee:message>
         </ee:transform>
-		<logger level="INFO" doc:name="End Status" doc:id="3b5f1b86-8cf1-4886-a562-d7f2354fa528" message="End of status flow"/>
+		<logger level="INFO" doc:name="End of status " doc:id="efad3fab-d1f3-4df6-bae5-4629ebd862ff" message="End of the status flow"/>
     
 </flow>
 </mule>
