@@ -68,7 +68,7 @@ pipeline
 	   script {
    configFileProvider([configFile(fileId: 'da01fc76-5c2b-4f0d-948a-c101b4cc4340', variable: 'settings')]){
    	LAST_STARTED = env.STAGE_NAME
- 	sh "mvn -f pom.xml -s $settings deploy -DmuleDeploy -Dsecure.key=mule -DskipTests -Dautodiscovery.id='17512639' -Dap.client_id=fda777bd3e3b4fcb93aff995fea2043d -Dap.client_secret=4193AA1986054C548Bf757fd1B7F6f18 -Dapp.runtime.semver=4.4.0 -Ddeployment.env=dev -Danypoint.businessGroup='NJC POC' -Ddeployment.name=sys-claims-cms"
+ 	sh "mvn -f pom.xml -s $settings deploy -DmuleDeploy -Dsecure.key=mule -DskipTests -Dautodiscovery.id='17512639' -Dap.client_id=fda777bd3e3b4fcb93aff995fea2043d -Dap.client_secret=4193AA1986054C548Bf757fd1B7F6f18 -Dapp.runtime.semver=4.4.0 -Ddeployment.env=dev -Danypoint.businessGroup='NJC POC' -Ddeployment.name=proc-claim-orch"
  	}
 	   }
    }
