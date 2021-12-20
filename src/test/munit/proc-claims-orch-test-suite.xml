@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="proc-claims-orch-test-suite.xml" />
+	<munit:test name="APIKIT:BAD_REQUEST" doc:id="5e30fa1f-5ff5-4e75-aad3-68d794144c6d" description="Test">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when" doc:id="15235a27-cb1f-470f-aa26-847785e0e3fe" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="proc-claims-orch-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:BAD_REQUEST" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<try doc:name="Try" doc:id="092b8993-7ab4-49f2-8a99-6e7577e9c81c" >
+				<flow-ref doc:name="Flow-ref to proc-claims-orch-main" doc:id="bb0b65dc-bab3-40de-9abf-febd37afb024" name="proc-claims-orch-main" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="c465aa41-9cea-4715-8bc6-41129823e14a" >
+						<logger level="INFO" doc:name="Logger" doc:id="77b0bdc4-eb2c-42a2-b55d-bb3ba820bead" message="logger"/>
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="41360131-8307-492b-8950-49e719dc5566" actual="#[payload]" expected='#[{&#10;  "message": "Bad request"&#10;}]'/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

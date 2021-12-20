@@ -1,0 +1,22 @@
+
+api: 
+  
+  artifactId: "proc-claims-orch-v1-dev"
+  version: "1.0.0"
+  majorVersion: "v1"
+  port: "8084"
+  
+tls.keystore:
+
+ type: "pkcs12"
+ alias: "server"
+ path: "certs/sys-claims-cms-dev.p12"
+  
+"autodiscovery":
+  "id": "17512639"
+
+# reconnection configuration
+"retries":
+  "frequency": "1000"
+  "attempts": "3"
+  "timeout": "400000"  

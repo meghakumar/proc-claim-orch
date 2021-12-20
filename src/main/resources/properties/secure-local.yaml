@@ -1,0 +1,6 @@
+tls.keystore:
+ password: "![TjrgNiKb/sw=]"
+ 
+ # api Configurations
+"sysclaims":
+  "Authorization": "![TjrgNiKb/sw=]"
